@@ -22,7 +22,8 @@ public class CreationClient extends HttpServlet {
 
     public static final String VUE             = "/afficherClient.jsp";
 
-    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+    public void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
         /*
          * Récupération des données saisies, envoyées en tant que paramètres de
          * la requête GET générée à la validation du formulaire

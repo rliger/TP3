@@ -50,7 +50,7 @@ form input.sansLabel {
 }
 
 #menu {
-	border-style: dashed solid;
-	border-color: grey;
-	padding : 10px;
+    padding: 15px;
+    border: 1px #0568CD solid;
+    margin: 10px;
 }

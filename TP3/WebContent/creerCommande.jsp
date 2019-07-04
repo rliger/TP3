@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,7 @@
     <body>
     <c:import url="inc/menu.jsp"/>
         <div>
-            <form method="get" action="creationCommande">
+            <form method="post" action="creationCommande">
                 <c:import url="inc/inc_client_form.jsp"/>
                 <fieldset>
                     <legend>Informations commande</legend>
