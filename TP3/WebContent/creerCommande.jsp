@@ -9,7 +9,7 @@
     <body>
     <c:import url="inc/menu.jsp"/>
         <div>
-            <form method="post" action="creationCommande">
+            <form method="post" action="afficherCommande">
                 <c:import url="inc/inc_client_form.jsp"/>
                 <fieldset>
                     <legend>Informations commande</legend>

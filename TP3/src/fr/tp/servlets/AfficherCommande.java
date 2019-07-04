@@ -14,7 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import fr.tp.beans.Client;
 import fr.tp.beans.Commande;
 
-public class CreationCommande extends HttpServlet {
+public class AfficherCommande extends HttpServlet {
 
     public static final String CHAMP_NOM             = "nomClient";
     public static final String CHAMP_PRENOM          = "prenomClient";

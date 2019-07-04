@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.tp.beans.Client;
 
-public class CreationClient extends HttpServlet {
+public class AfficherClient extends HttpServlet {
 
     public static final String CHAMP_NOM       = "nomClient";
     public static final String CHAMP_PRENOM    = "prenomClient";
