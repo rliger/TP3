@@ -9,15 +9,6 @@
 <body>
 	<c:import url="../inc/menu.jsp" />
 	<%-- Affichage de la chaîne "message" transmise par la servlet --%>
-	<p class="info">
-		<c:if test="${message == true}">
-			<p class="info">
-				Erreur - Vous n'avez pas rempli tous les champs obligatoires. <br />
-				<a href="<c:url value = "creerClient"/>">Cliquez ici</a> pour
-				accéder au formulaire de création d'un client.
-			</p>
-		</c:if>
-		<c:if test="${message ==false}">
 			<p class="info">Client créé avec succès !</p>
 
 
@@ -42,6 +33,5 @@
 				Email :
 				<c:out value="${ client.email }" />
 			</p>
-		</c:if>
 </body>
 </html>

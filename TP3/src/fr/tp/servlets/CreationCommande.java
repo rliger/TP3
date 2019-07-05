@@ -14,7 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import fr.tp.beans.Client;
 import fr.tp.beans.Commande;
 
-public class AfficherCommande extends HttpServlet {
+public class CreationCommande extends HttpServlet {
 
     public static final String CHAMP_NOM             = "nomClient";
     public static final String CHAMP_PRENOM          = "prenomClient";
@@ -34,7 +34,13 @@ public class AfficherCommande extends HttpServlet {
 
     public static final String FORMAT_DATE           = "dd/MM/yyyy HH:mm:ss";
 
-    public static final String VUE                   = "/WEB-INF/afficherCommande.jsp";
+    public static final String VUE_COMMANDE          = "/WEB-INF/afficherCommande.jsp";
+    public static final String VUE_FORMCOMMANDE      = "/WEB-INF/creerCommande.jsp";
+
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /* Affichage de la page d'inscription */
+        this.getServletContext().getRequestDispatcher( VUE_FORMCOMMANDE ).forward( request, response );
+    }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -102,6 +108,12 @@ public class AfficherCommande extends HttpServlet {
         request.setAttribute( ATT_MESSAGE, message );
 
         /* Transmission à la page JSP en charge de l'affichage des données */
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        if ( formCommande.getErreurs().containsKey( "nomClient" )
+                || formCommande.getErreurs().containsKey( "adresseClient" )
+                || formCommande.getErreurs().containsKey( "telephoneClient" ) ) {
+            this.getServletContext().getRequestDispatcher( VUE_FORMCOMMANDE ).forward( request, response );
+        } else {
+            this.getServletContext().getRequestDispatcher( VUE_COMMANDE ).forward( request, response );
+        }
     }
 }

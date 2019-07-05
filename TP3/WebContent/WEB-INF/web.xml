@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <servlet>
-    <servlet-name>AfficherClient</servlet-name>
-    <servlet-class>fr.tp.servlets.AfficherClient</servlet-class>
+    <servlet-name>CreationClient</servlet-name>
+    <servlet-class>fr.tp.servlets.CreationClient</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AfficherCommande</servlet-name>
-    <servlet-class>fr.tp.servlets.AfficherCommande</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CreerClient</servlet-name>
-    <servlet-class>fr.tp.servlets.CreerClient</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CreerCommande</servlet-name>
-    <servlet-class>fr.tp.servlets.CreerCommande</servlet-class>
+    <servlet-name>CreationCommande</servlet-name>
+    <servlet-class>fr.tp.servlets.CreationCommande</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AfficherClient</servlet-name>
-    <url-pattern>/afficherClient</url-pattern>
+    <servlet-name>CreationClient</servlet-name>
+    <url-pattern>/creationClient</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AfficherCommande</servlet-name>
-    <url-pattern>/afficherCommande</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CreerClient</servlet-name>
-    <url-pattern>/creerClient</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CreerCommande</servlet-name>
-    <url-pattern>/creerCommande</url-pattern>
+    <servlet-name>CreationCommande</servlet-name>
+    <url-pattern>/creationCommande</url-pattern>
   </servlet-mapping>
     <jsp-config>
 		<jsp-property-group>
