@@ -12,6 +12,10 @@
     <servlet-name>CreerClient</servlet-name>
     <servlet-class>fr.tp.servlets.CreerClient</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CreerCommande</servlet-name>
+    <servlet-class>fr.tp.servlets.CreerCommande</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>AfficherClient</servlet-name>
     <url-pattern>/afficherClient</url-pattern>
@@ -20,9 +24,13 @@
     <servlet-name>AfficherCommande</servlet-name>
     <url-pattern>/afficherCommande</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>CreerClient</servlet-name>
     <url-pattern>/creerClient</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreerCommande</servlet-name>
+    <url-pattern>/creerCommande</url-pattern>
   </servlet-mapping>
     <jsp-config>
 		<jsp-property-group>
