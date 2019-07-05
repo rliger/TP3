@@ -1,7 +1,7 @@
 
 <html>
 <div id="menu">
-	<a title="CreerClient" href="creerClient.jsp"> Créer un
+	<a title="CreerClient" href="creerClient"> Créer un
 		nouveau client</a>
 	<br />
 	<br />

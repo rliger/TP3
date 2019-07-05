@@ -20,7 +20,7 @@ public class AfficherClient extends HttpServlet {
     public static final String ATT_CLIENT      = "client";
     public static final String ATT_MESSAGE     = "message";
 
-    public static final String VUE             = "/afficherClient.jsp";
+    public static final String VUE             = "/WEB-INF/afficherClient.jsp";
 
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {

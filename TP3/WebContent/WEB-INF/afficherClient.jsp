@@ -7,13 +7,13 @@
 <link type="text/css" rel="stylesheet" href="<c:url value = "inc/style.css"/>"/>
 </head>
 <body>
-	<c:import url="inc/menu.jsp" />
+	<c:import url="../inc/menu.jsp" />
 	<%-- Affichage de la chaîne "message" transmise par la servlet --%>
 	<p class="info">
 		<c:if test="${message == true}">
 			<p class="info">
 				Erreur - Vous n'avez pas rempli tous les champs obligatoires. <br />
-				<a href="<c:url value = "creerClient.jsp"/>">Cliquez ici</a> pour
+				<a href="<c:url value = "creerClient"/>">Cliquez ici</a> pour
 				accéder au formulaire de création d'un client.
 			</p>
 		</c:if>
