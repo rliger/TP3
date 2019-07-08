@@ -34,60 +34,13 @@ public final class FormCommande {
         return erreurs;
     }
 
-    public Client creationClient( HttpServletRequest request ) {
-        String nom = getValeurChamp( request, CHAMP_NOM );
-        String prenom = getValeurChamp( request, CHAMP_PRENOM );
-        String adresse = getValeurChamp( request, CHAMP_ADRESSE );
-        String telephone = getValeurChamp( request, CHAMP_TELEPHONE );
-        String email = getValeurChamp( request, CHAMP_EMAIL );
-
-        Client client = new Client();
-
-        try {
-            validationNom( nom );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_NOM, e.getMessage() );
-        }
-        client.setNom( nom );
-
-        try {
-            validationPrenom( prenom );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PRENOM, e.getMessage() );
-        }
-        client.setPrenom( prenom );
-
-        try {
-            validationAdresse( adresse );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_ADRESSE, e.getMessage() );
-        }
-        client.setAdresse( adresse );
-
-        try {
-            validationTelephone( telephone );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_TELEPHONE, e.getMessage() );
-        }
-        client.setTelephone( telephone );
-
-        try {
-            validationEmail( email );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_EMAIL, e.getMessage() );
-        }
-        client.setEmail( email );
-
-        if ( erreurs.isEmpty() ) {
-            resultat = "Succès de Création du Client.";
-        } else {
-            resultat = "Le formulaire Client comporte des erreurs.";
-        }
-
-        return client;
-    }
-
     public Commande creationCommande( HttpServletRequest request ) {
+
+        FormClient clientForm = new FormClient();
+        Client client = clientForm.creationClient( request );
+
+        erreurs = clientForm.getErreurs();
+
         DateTime dt = new DateTime();
         DateTimeFormatter formatter = DateTimeFormat.forPattern( FORMAT_DATE );
         String date = dt.toString( formatter );
@@ -99,7 +52,7 @@ public final class FormCommande {
 
         Commande commande = new Commande();
 
-        commande.setClient( creationClient( request ) );
+        commande.setClient( client );
 
         try {
             validationDate( date );
@@ -113,7 +66,9 @@ public final class FormCommande {
         } catch ( Exception e ) {
             setErreur( CHAMP_MONTANT, e.getMessage() );
         }
-        commande.setMontant( Double.parseDouble( montant ) );
+        if ( estUnDouble( montant ) ) {
+            commande.setMontant( Double.parseDouble( montant ) );
+        }
 
         try {
             validationModePaiement( modePaiement );
@@ -144,9 +99,9 @@ public final class FormCommande {
         commande.setStatutLivraison( statutLivraison );
 
         if ( erreurs.isEmpty() ) {
-            resultat = "Succès de Création du Client.";
+            resultat = "Succès de Création de la commande.";
         } else {
-            resultat = "Le formulaire Client comporte des erreurs.";
+            resultat = "Le formulaire de commande comporte des erreurs.";
         }
 
         return commande;
@@ -159,13 +114,13 @@ public final class FormCommande {
     }
 
     private void validationPrenom( String prenom ) throws Exception {
-        if ( prenom != null && prenom.length() < 2 ) {
+        if ( prenom == null || prenom.length() < 2 ) {
             throw new Exception( "Le prénom du client doit contenir au moins 2 caractères." );
         }
     }
 
     private void validationAdresse( String adresse ) throws Exception {
-        if ( adresse != null && adresse.length() < 10 ) {
+        if ( adresse == null || adresse.length() < 10 ) {
             throw new Exception( "L'adresse du client doit contenir au moins 10 caractères." );
         }
     }
@@ -202,14 +157,24 @@ public final class FormCommande {
         }
     }
 
-    private void validationMontant( String montant ) throws Exception {
-        Double mont;
-        try {
-            mont = Double.parseDouble( montant );
-        } catch ( NumberFormatException e ) {
-            mont = -1.0;
+    private boolean estUnDouble( String montant ) {
+        if ( montant == null ) {
+            return false;
         }
-        if ( mont < 0 ) {
+        try {
+            Double.parseDouble( montant );
+        } catch ( NumberFormatException e ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void validationMontant( String montant ) throws Exception {
+        if ( montant == null ) {
+            throw new Exception( "Aucun montant saisi." );
+        }
+        if ( montant != null && !estUnDouble( montant ) ) {
             throw new Exception( "Le montant saisi n'est pas correct." );
         }
     }
@@ -221,7 +186,7 @@ public final class FormCommande {
     }
 
     private void validationStatutPaiement( String statutPaiement ) throws Exception {
-        if ( statutPaiement == null || statutPaiement.length() < 2 ) {
+        if ( statutPaiement != null && statutPaiement.length() < 2 ) {
             throw new Exception( "Le statut du paiement doit contenir au moins 2 caractères." );
         }
     }
@@ -233,7 +198,7 @@ public final class FormCommande {
     }
 
     private void validationStatutLivraison( String statutLivraison ) throws Exception {
-        if ( statutLivraison == null || statutLivraison.length() < 2 ) {
+        if ( statutLivraison != null && statutLivraison.length() < 2 ) {
             throw new Exception( "Le statut de la livraison doit contenir au moins 2 caractères." );
         }
     }

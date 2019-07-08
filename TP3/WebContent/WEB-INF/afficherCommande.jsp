@@ -8,18 +8,9 @@
 </head>
 <body>
 	<c:import url="../inc/menu.jsp" />
-	<%-- Affichage de la chaîne "message" transmise par la servlet --%>
-	<c:if test="${message ==true}">
-		<p class="info">
-			Erreur - Vous n'avez pas rempli tous les champs obligatoires. <br />
-			<a href="<c:url value = "creerCommande"/>">Cliquez ici</a> pour
-			accéder au formulaire de création d'une commande.
-		</p>
-	</c:if>
-	<c:if test="${message ==false}">
 		<p class="info">Commande créée avec succès !</p>
 		<%-- Puis affichage des données enregistrées dans le bean "commande" transmis par la servlet --%>
-		<p>Client</p>
+		<h1>Client</h1>
 		<%-- Les 5 expressions suivantes accèdent aux propriétés du client, qui est lui-même une propriété du bean commande --%>
 		<p>
 			Nom :
@@ -41,7 +32,7 @@
 			Email :
 			<c:out value="${ commande.client.email }" />
 		</p>
-		<p>Commande</p>
+		<h1>Commande</h1>
 		<p>
 			Date :
 			<c:out value="${ commande.date }" />
@@ -66,6 +57,5 @@
 			Statut de la livraison :
 			<c:out value="${ commande.statutLivraison }" />
 		</p>
-	</c:if>
 </body>
 </html>

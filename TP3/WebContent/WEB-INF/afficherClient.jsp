@@ -8,7 +8,6 @@
 </head>
 <body>
 	<c:import url="../inc/menu.jsp" />
-	<%-- Affichage de la chaîne "message" transmise par la servlet --%>
 			<p class="info">Client créé avec succès !</p>
 
 

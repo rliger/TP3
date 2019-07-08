@@ -39,12 +39,10 @@ public class CreationClient extends HttpServlet {
         request.setAttribute( ATT_FORMCLIENT, formClient );
 
         /* Transmission à la page JSP en charge de l'affichage des données */
-        if ( formClient.getErreurs().containsKey( "nomClient" )
-                || formClient.getErreurs().containsKey( "adresseClient" )
-                || formClient.getErreurs().containsKey( "telephoneClient" ) ) {
-            this.getServletContext().getRequestDispatcher( VUE_FORMCLIENT ).forward( request, response );
-        } else {
+        if ( formClient.getErreurs().isEmpty() ) {
             this.getServletContext().getRequestDispatcher( VUE_CLIENT ).forward( request, response );
+        } else {
+            this.getServletContext().getRequestDispatcher( VUE_FORMCLIENT ).forward( request, response );
         }
     }
 }
